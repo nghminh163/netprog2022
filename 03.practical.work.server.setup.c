@@ -2,6 +2,7 @@
 #include <netinet/in.h>
 #include <sys/socket.h>
 #include <string.h>
+#include <arpa/inet.h>
 
 int main()
 {
@@ -43,7 +44,7 @@ int main()
             return 1;
         }
 
-        printf("A client connected!\n");
+        printf("A client IP address is %s connected\n", inet_ntoa(caddr.sin_addr));
     }
     return 0;
 }
