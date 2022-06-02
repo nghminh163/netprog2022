@@ -51,7 +51,7 @@ int main()
         recv(clientfd, sBuff, sizeof(sBuff), 0);
         printf("From client: %s\n", sBuff);
         printf("> ");
-        scanf("%s", rBuff);
+        fgets(rBuff, sizeof(rBuff), stdin);
         send(clientfd, rBuff, sizeof(rBuff), 0);
     }
 

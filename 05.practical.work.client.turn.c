@@ -7,21 +7,19 @@
 
 int main(int argc, char **argv)
 {
-    // char input[255];
-    // if (argc > 1)
-    // {
-    //     strcpy(input, argv[1]);
-    // }
-    // else
-    // {
-    //     printf("Enter a domain name: ");
-    //     fgets(input, sizeof(input), stdin);
-    //     input[strlen(input) - 1] = '\0';
-    // }
+    char input[255];
+    if (argc > 1)
+    {
+        strcpy(input, argv[1]);
+    }
+    else
+    {
+        printf("Enter a domain name: ");
+        fgets(input, sizeof(input), stdin);
+        input[strlen(input) - 1] = '\0';
+    }
     struct hostent *host_info;
-    // if ((host_info = gethostbyname(input)) == NULL)
-    if ((host_info = gethostbyname("localhost")) == NULL)
-
+    if ((host_info = gethostbyname(input)) == NULL)
     {
         printf("No such host\n");
         return 1;
@@ -49,7 +47,7 @@ int main(int argc, char **argv)
     while (1)
     {
         printf("> ");
-        scanf("%s", sBuff);
+        fgets(sBuff, sizeof(sBuff), stdin);
         send(sockfd, sBuff, sizeof(sBuff), 0);
         recv(sockfd, rBuff, sizeof(rBuff), 0);
         printf("Server: %s\n", rBuff);
