@@ -61,7 +61,7 @@ int main()
         printf("Type your message: ");
         do
         {
-            fgets(buff, 1024, stdin);
+            fgets(buff, sizeof(buff), stdin);
             send(clientfd, buff, strlen(buff) + 1, 0);
         } while (buff[strlen(buff) - 1] != '\n');
     }
